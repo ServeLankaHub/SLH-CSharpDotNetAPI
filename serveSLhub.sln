@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "serveSLhub", "serveSLhub.csproj", "{8A6E636F-7A91-46EF-BEA7-DA7E8F2EB8EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8A6E636F-7A91-46EF-BEA7-DA7E8F2EB8EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A6E636F-7A91-46EF-BEA7-DA7E8F2EB8EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A6E636F-7A91-46EF-BEA7-DA7E8F2EB8EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A6E636F-7A91-46EF-BEA7-DA7E8F2EB8EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9C9A5EFB-6D8C-4FE5-BDB4-63303B3DA3D3}
+	EndGlobalSection
+EndGlobal
