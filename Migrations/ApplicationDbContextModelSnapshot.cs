@@ -249,10 +249,7 @@ namespace serveSLhub.Migrations
             modelBuilder.Entity("serveSLhub.Entities.Family_Members", b =>
                 {
                     b.Property<int>("PesronID")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PesronID"), 1L, 1);
 
                     b.Property<int>("FamilyID")
                         .HasColumnType("int");
@@ -264,14 +261,9 @@ namespace serveSLhub.Migrations
                     b.Property<bool>("Ishead")
                         .HasColumnType("bit");
 
-                    b.Property<int>("PersonDetailsPersonId")
-                        .HasColumnType("int");
-
                     b.HasKey("PesronID");
 
                     b.HasIndex("FamilyID");
-
-                    b.HasIndex("PersonDetailsPersonId");
 
                     b.ToTable("familyMembers");
                 });
@@ -327,6 +319,13 @@ namespace serveSLhub.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("GN_DivisionDivisionID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Married_Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -355,14 +354,13 @@ namespace serveSLhub.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UsersId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("PersonId");
 
                     b.HasIndex("DivisionID");
 
-                    b.HasIndex("UsersId");
+                    b.HasIndex("GN_DivisionDivisionID");
+
+                    b.HasIndex("ID");
 
                     b.ToTable("personDetails");
                 });
@@ -463,7 +461,7 @@ namespace serveSLhub.Migrations
 
                     b.HasOne("serveSLhub.Entities.PersonDetails", "PersonDetails")
                         .WithMany()
-                        .HasForeignKey("PersonDetailsPersonId")
+                        .HasForeignKey("PesronID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -486,14 +484,20 @@ namespace serveSLhub.Migrations
             modelBuilder.Entity("serveSLhub.Entities.PersonDetails", b =>
                 {
                     b.HasOne("serveSLhub.Entities.GN_Division", "GN_Division")
-                        .WithMany("PersonDetails")
+                        .WithMany()
                         .HasForeignKey("DivisionID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("serveSLhub.Entities.GN_Division", null)
+                        .WithMany("PersonDetails")
+                        .HasForeignKey("GN_DivisionDivisionID");
 
                     b.HasOne("serveSLhub.Entities.Users", "Users")
                         .WithMany()
-                        .HasForeignKey("UsersId");
+                        .HasForeignKey("ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("GN_Division");
 

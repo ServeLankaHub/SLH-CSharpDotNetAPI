@@ -7,7 +7,7 @@ namespace serveSLhub.Entities
 
     {
         [Key]
-        [ForeignKey("personDetails")]
+        [ForeignKey("PersonDetails")]
         public int PesronID { get; set; }
 
         [ForeignKey("Family")]

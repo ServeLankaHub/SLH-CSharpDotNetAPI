@@ -19,6 +19,17 @@ namespace serveSLhub.DbContext
                 .HasIndex(gn => gn.UserId)
                 .IsUnique(); // Set GramaNiladhariId as unique 
 
+            builder.Entity<PersonDetails>()
+        .HasOne(pd => pd.GN_Division)
+        .WithMany()
+        .HasForeignKey(pd => pd.DivisionID)
+        .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<PersonDetails>()
+        .HasOne(pd => pd.GN_Division)
+        .WithMany()
+        .HasForeignKey(pd => pd.DivisionID)
+        .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(builder);
         }

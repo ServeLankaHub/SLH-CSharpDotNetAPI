@@ -9,6 +9,9 @@ namespace serveSLhub.Entities
         
         public int PersonId { get; set; }
 
+        [ForeignKey("Users")]
+        public string ID { get; set; }
+
         [ForeignKey("GN_Division")]
         public int DivisionID { get; set; }
         public string FullName { get; set; }

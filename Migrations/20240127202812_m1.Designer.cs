@@ -12,8 +12,8 @@ using serveSLhub.DbContext;
 namespace serveSLhub.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240127195918_m6")]
-    partial class m6
+    [Migration("20240127202812_m1")]
+    partial class m1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -321,6 +321,13 @@ namespace serveSLhub.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("GN_DivisionDivisionID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Married_Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -349,14 +356,13 @@ namespace serveSLhub.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UsersId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("PersonId");
 
                     b.HasIndex("DivisionID");
 
-                    b.HasIndex("UsersId");
+                    b.HasIndex("GN_DivisionDivisionID");
+
+                    b.HasIndex("ID");
 
                     b.ToTable("personDetails");
                 });
@@ -480,14 +486,20 @@ namespace serveSLhub.Migrations
             modelBuilder.Entity("serveSLhub.Entities.PersonDetails", b =>
                 {
                     b.HasOne("serveSLhub.Entities.GN_Division", "GN_Division")
-                        .WithMany("PersonDetails")
+                        .WithMany()
                         .HasForeignKey("DivisionID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("serveSLhub.Entities.GN_Division", null)
+                        .WithMany("PersonDetails")
+                        .HasForeignKey("GN_DivisionDivisionID");
 
                     b.HasOne("serveSLhub.Entities.Users", "Users")
                         .WithMany()
-                        .HasForeignKey("UsersId");
+                        .HasForeignKey("ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("GN_Division");
 
