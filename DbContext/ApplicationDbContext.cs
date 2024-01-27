@@ -19,20 +19,6 @@ namespace serveSLhub.DbContext
                 .HasIndex(gn => gn.UserId)
                 .IsUnique(); // Set GramaNiladhariId as unique 
 
-            builder.Entity<PersonDetails>()
-                .HasKey(pd => pd.UserId);
-
-            builder.Entity<PersonDetails>()
-                .HasOne(pd => pd.Users)
-                .WithOne()
-                .HasForeignKey<PersonDetails>(pd => pd.UserId)
-                .OnDelete(DeleteBehavior.Cascade);  // Adjust the delete behavior as needed
-
-            builder.Entity<PersonDetails>()
-                .HasOne(pd => pd.GN_Division)
-                .WithMany()
-                .HasForeignKey(pd => pd.DivisionID)
-                .OnDelete(DeleteBehavior.NoAction);  // Adjust the delete behavior as needed
 
             base.OnModelCreating(builder);
         }
@@ -42,5 +28,7 @@ namespace serveSLhub.DbContext
         public DbSet<GN_Division>? gN_Divisions { get; set; }
 
         public DbSet<PersonDetails>? personDetails { get; set; }
+        public DbSet<Family>? families { get; set; }
+        public DbSet<Family_Members>? familyMembers { get; set; }
     }
 }

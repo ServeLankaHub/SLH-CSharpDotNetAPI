@@ -26,8 +26,6 @@ namespace serveSLhub.Entities
         public string? dateofBirth { get; set; }
         public string? joinedDate { get; set; }
 
-        public GN_Division GN_Division { get; set; }
-
-        public PersonDetails PersonDetails { get; set; }
+        
     }
 }
