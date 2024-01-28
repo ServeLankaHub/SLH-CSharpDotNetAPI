@@ -14,11 +14,11 @@ namespace serveSLhub.Entities
 
         // Foreign key property
         [ForeignKey("Users")]
-        public string UserId { get; set; }
+        public string Id { get; set; }
 
-        public Users Users { get; set; }
+        public virtual Users Users { get; set; }
 
-        public List<PersonDetails> PersonDetails { get; set; }
+        public virtual ICollection<PersonDetails> PersonDetails { get; set; }
 
 
     }

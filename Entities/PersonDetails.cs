@@ -9,8 +9,6 @@ namespace serveSLhub.Entities
         
         public int PersonId { get; set; }
 
-        [ForeignKey("Users")]
-        public string ID { get; set; }
 
         [ForeignKey("GN_Division")]
         public int DivisionID { get; set; }
@@ -34,8 +32,8 @@ namespace serveSLhub.Entities
         public string Date_of_Residence { get; set; }
 
         
-        public Users Users { get; set; }    
-
-        public GN_Division GN_Division { get; set; }
+        
+        public virtual GN_Division GN_Division { get; set; }
+        public virtual Family_Members FamilyMembers { get; set; }
     }
 }

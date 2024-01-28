@@ -16,7 +16,7 @@ namespace serveSLhub.Entities
         public string Family_Position {  get; set; }
         public bool Ishead {  get; set; }
 
-        public PersonDetails PersonDetails { get; set; }
-        public Family Family { get; set; }
+        public virtual PersonDetails PersonDetails { get; set; }
+        public virtual Family Family { get; set; }
     }
 }

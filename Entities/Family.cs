@@ -5,5 +5,7 @@
         public int FamilyId { get; set; }   
         public int Number_of_Members {  get; set; }
         public string Income_Category {  get; set; }
+
+        public virtual ICollection<Family_Members> Members { get; set; }
     }
 }
